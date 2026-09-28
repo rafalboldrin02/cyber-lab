@@ -1,30 +1,708 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Cyber Lab - Aula 1</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cyber Lab CTF</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #080b10;
+        color: #e6edf3;
+        min-height: 100vh;
+    }
+
+    header {
+        background: #0d1117;
+        border-bottom: 1px solid #30363d;
+        padding: 20px;
+    }
+
+    header h1 {
+        color: #58a6ff;
+    }
+
+    header p {
+        color: #8b949e;
+        margin-top: 5px;
+    }
+
+    nav {
+        margin-top: 15px;
+    }
+
+    nav button {
+        background: #161b22;
+        border: 1px solid #30363d;
+        color: #c9d1d9;
+        padding: 10px 15px;
+        margin-right: 5px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    nav button:hover {
+        background: #21262d;
+    }
+
+    main {
+        max-width: 1000px;
+        margin: 30px auto;
+        padding: 20px;
+    }
+
+    .card {
+        background: #0d1117;
+        border: 1px solid #30363d;
+        border-radius: 10px;
+        padding: 25px;
+        margin-bottom: 20px;
+    }
+
+    .card h2 {
+        margin-bottom: 15px;
+        color: #58a6ff;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        background: #010409;
+        border: 1px solid #30363d;
+        color: white;
+        border-radius: 6px;
+    }
+
+    button.primary {
+        background: #238636;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    button.primary:hover {
+        background: #2ea043;
+    }
+
+    .danger {
+        color: #ff7b72;
+    }
+
+    .success {
+        color: #3fb950;
+    }
+
+    .warning {
+        color: #d29922;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .challenge {
+        border-left: 4px solid #58a6ff;
+        padding: 15px;
+        margin: 15px 0;
+        background: #161b22;
+    }
+
+    .flag {
+        background: #111;
+        border: 1px dashed #3fb950;
+        padding: 15px;
+        color: #3fb950;
+        font-family: monospace;
+        margin-top: 15px;
+    }
+
+    code {
+        background: #161b22;
+        padding: 3px 6px;
+        border-radius: 4px;
+        color: #ff7b72;
+    }
+
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+    }
+
+    .stat {
+        background: #161b22;
+        border: 1px solid #30363d;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .stat strong {
+        display: block;
+        font-size: 28px;
+        color: #58a6ff;
+        margin-top: 5px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    th, td {
+        border-bottom: 1px solid #30363d;
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        color: #58a6ff;
+    }
+
+    footer {
+        text-align: center;
+        padding: 30px;
+        color: #8b949e;
+    }
+</style>
 </head>
 
 <body>
 
-    <h1>🛡️ Cyber Lab</h1>
+<header>
 
-    <p>Laboratório de XSS</p>
+    <h1>🛡️ Cyber Lab CTF</h1>
 
-    <input id="nome" placeholder="Digite seu nome">
-    <button onclick="mostrar()">Enviar</button>
+    <p>
+        Laboratório educacional de segurança web
+    </p>
 
-    <div id="resultado"></div>
+    <nav>
+        <button onclick="mostrar('inicio')">Início</button>
+        <button onclick="mostrar('login')">Login</button>
+        <button onclick="mostrar('desafios')">Desafios</button>
+        <button onclick="mostrar('admin')">Admin</button>
+    </nav>
 
-    <script>
-        function mostrar() {
-            const nome = document.getElementById("nome").value;
+</header>
 
-            // VULNERABILIDADE INTENCIONAL
-            document.getElementById("resultado").innerHTML =
-                "<h2>Olá, " + nome + "!</h2>";
-        }
-    </script>
+
+<main>
+
+<!-- INÍCIO -->
+
+<section id="inicio">
+
+    <div class="card">
+
+        <h2>Bem-vindo ao Cyber Lab</h2>
+
+        <p>
+            Este é um laboratório CTF criado para estudar
+            segurança de aplicações web.
+        </p>
+
+        <br>
+
+        <p>
+            Seu objetivo é investigar o sistema,
+            encontrar vulnerabilidades e descobrir as flags.
+        </p>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat">
+            Desafios
+            <strong>5</strong>
+        </div>
+
+        <div class="stat">
+            Dificuldade
+            <strong>⭐</strong>
+        </div>
+
+        <div class="stat">
+            Flags
+            <strong>5</strong>
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>⚠️ Regras</h2>
+
+        <p>
+            Este ambiente é fictício e foi criado exclusivamente
+            para treinamento.
+        </p>
+
+        <br>
+
+        <p>
+            Não utilize as técnicas aprendidas contra sistemas
+            que você não possui autorização para testar.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- LOGIN -->
+
+<section id="login" class="hidden">
+
+    <div class="card">
+
+        <h2>🔐 Login administrativo</h2>
+
+        <p>
+            Tente acessar a área administrativa.
+        </p>
+
+        <br>
+
+        <input
+            id="usuario"
+            placeholder="Usuário"
+        >
+
+        <input
+            id="senha"
+            type="password"
+            placeholder="Senha"
+        >
+
+        <button
+            class="primary"
+            onclick="login()"
+        >
+            Entrar
+        </button>
+
+        <p id="loginResultado"></p>
+
+    </div>
+
+</section>
+
+
+<!-- DESAFIOS -->
+
+<section id="desafios" class="hidden">
+
+    <div class="card">
+
+        <h2>🎯 Desafios</h2>
+
+
+        <div class="challenge">
+
+            <h3>Desafio 1: Reconhecimento</h3>
+
+            <p>
+                Descubra onde está localizado o painel
+                administrativo.
+            </p>
+
+            <br>
+
+            <p>
+                Dica:
+                <code>/admin</code>
+            </p>
+
+        </div>
+
+
+        <div class="challenge">
+
+            <h3>Desafio 2: Código-fonte</h3>
+
+            <p>
+                Investigue o código JavaScript desta página.
+                Existe alguma informação interessante escondida?
+            </p>
+
+            <br>
+
+            <button
+                class="primary"
+                onclick="mostrarDica(2)"
+            >
+                Ver dica
+            </button>
+
+            <p id="dica2"></p>
+
+        </div>
+
+
+        <div class="challenge">
+
+            <h3>Desafio 3: Credenciais</h3>
+
+            <p>
+                Encontre as credenciais de teste
+                observando o comportamento da aplicação.
+            </p>
+
+            <br>
+
+            <button
+                class="primary"
+                onclick="mostrarDica(3)"
+            >
+                Ver dica
+            </button>
+
+            <p id="dica3"></p>
+
+        </div>
+
+
+        <div class="challenge">
+
+            <h3>Desafio 4: Sessão</h3>
+
+            <p>
+                Depois do login, investigue o armazenamento
+                local do navegador.
+            </p>
+
+            <br>
+
+            <button
+                class="primary"
+                onclick="mostrarDica(4)"
+            >
+                Ver dica
+            </button>
+
+            <p id="dica4"></p>
+
+        </div>
+
+
+        <div class="challenge">
+
+            <h3>Desafio 5: A Flag Final</h3>
+
+            <p>
+                Consiga acesso ao painel administrativo
+                e procure a informação secreta.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ADMIN -->
+
+<section id="admin" class="hidden">
+
+    <div class="card">
+
+        <h2>🔐 Painel Administrativo</h2>
+
+        <p id="adminStatus" class="danger">
+            Acesso não autorizado.
+        </p>
+
+    </div>
+
+
+    <div id="painel" class="hidden">
+
+        <div class="stats">
+
+            <div class="stat">
+                Usuários
+                <strong>42</strong>
+            </div>
+
+            <div class="stat">
+                Servidor
+                <strong>ONLINE</strong>
+            </div>
+
+            <div class="stat">
+                Segurança
+                <strong>CTF</strong>
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>👥 Usuários</h2>
+
+            <table>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Usuário</th>
+                    <th>Função</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>admin</td>
+                    <td>Administrador</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>joao</td>
+                    <td>Usuário</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>maria</td>
+                    <td>Usuário</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>🚩 Área secreta</h2>
+
+            <p>
+                Parabéns. Você chegou ao painel.
+            </p>
+
+            <div class="flag">
+                FLAG{CYBER_LAB_ADMIN_ACCESS}
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    Cyber Lab • Ambiente educacional
+
+</footer>
+
+
+<script>
+
+/*
+==================================================
+CONFIGURAÇÃO DO CTF
+==================================================
+*/
+
+const CTF = {
+
+    usuario: "admin",
+
+    senha: "cyber123",
+
+    flag: "FLAG{CYBER_LAB_ADMIN_ACCESS}"
+
+};
+
+
+/*
+==================================================
+NAVEGAÇÃO
+==================================================
+*/
+
+function mostrar(secao) {
+
+    const secoes = [
+        "inicio",
+        "login",
+        "desafios",
+        "admin"
+    ];
+
+    secoes.forEach(function(id) {
+
+        document
+            .getElementById(id)
+            .classList.add("hidden");
+
+    });
+
+    document
+        .getElementById(secao)
+        .classList.remove("hidden");
+
+}
+
+
+/*
+==================================================
+LOGIN DO CTF
+==================================================
+*/
+
+function login() {
+
+    const usuario =
+        document.getElementById("usuario").value;
+
+    const senha =
+        document.getElementById("senha").value;
+
+    const resultado =
+        document.getElementById("loginResultado");
+
+
+    if (
+        usuario === CTF.usuario &&
+        senha === CTF.senha
+    ) {
+
+        localStorage.setItem(
+            "ctf_admin",
+            "true"
+        );
+
+        localStorage.setItem(
+            "ctf_usuario",
+            usuario
+        );
+
+        resultado.innerHTML =
+            "<span class='success'>Login realizado!</span>";
+
+        mostrar("admin");
+
+        carregarPainel();
+
+    }
+
+    else {
+
+        resultado.innerHTML =
+            "<span class='danger'>Usuário ou senha incorretos.</span>";
+
+    }
+
+}
+
+
+/*
+==================================================
+VERIFICAÇÃO DO PAINEL
+==================================================
+*/
+
+function carregarPainel() {
+
+    const acesso =
+        localStorage.getItem("ctf_admin");
+
+
+    if (acesso === "true") {
+
+        document
+            .getElementById("adminStatus")
+            .innerHTML =
+            "<span class='success'>✅ Acesso autorizado</span>";
+
+        document
+            .getElementById("painel")
+            .classList.remove("hidden");
+
+    }
+
+    else {
+
+        document
+            .getElementById("adminStatus")
+            .innerHTML =
+            "<span class='danger'>❌ Acesso não autorizado</span>";
+
+        document
+            .getElementById("painel")
+            .classList.add("hidden");
+
+    }
+
+}
+
+
+/*
+==================================================
+DESAFIOS
+==================================================
+*/
+
+function mostrarDica(numero) {
+
+    if (numero === 2) {
+
+        document.getElementById("dica2").innerHTML =
+            "<br><span class='warning'>Dica: use F12 e investigue o JavaScript.</span>";
+
+    }
+
+
+    if (numero === 3) {
+
+        document.getElementById("dica3").innerHTML =
+            "<br><span class='warning'>Dica: procure informações que nunca deveriam estar expostas no frontend.</span>";
+
+    }
+
+
+    if (numero === 4) {
+
+        document.getElementById("dica4").innerHTML =
+            "<br><span class='warning'>Dica: DevTools → Application → Local Storage.</span>";
+
+    }
+
+}
+
+
+/*
+==================================================
+INICIALIZAÇÃO
+==================================================
+*/
+
+carregarPainel();
+
+</script>
 
 </body>
 </html>
