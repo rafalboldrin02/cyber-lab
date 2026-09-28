@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cyber Lab - Aula 1</title>
+</head>
+
+<body>
+
+    <h1>🛡️ Cyber Lab</h1>
+
+    <p>Laboratório de XSS</p>
+
+    <input id="nome" placeholder="Digite seu nome">
+    <button onclick="mostrar()">Enviar</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function mostrar() {
+            const nome = document.getElementById("nome").value;
+
+            // VULNERABILIDADE INTENCIONAL
+            document.getElementById("resultado").innerHTML =
+                "<h2>Olá, " + nome + "!</h2>";
+        }
+    </script>
+
+</body>
+</html>
